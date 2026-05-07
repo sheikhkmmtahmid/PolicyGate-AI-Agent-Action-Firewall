@@ -1,0 +1,18 @@
+process_refund:
+  require_prior_tool: check_order
+  conditions:
+    - field: order_age_days
+      op: lt
+      value: 30
+    - field: status
+      op: eq
+      value: Damaged
+
+delete_record:
+  conditions:
+    - field: role
+      op: eq
+      value: admin
+    - field: confirmed
+      op: eq
+      value: true
