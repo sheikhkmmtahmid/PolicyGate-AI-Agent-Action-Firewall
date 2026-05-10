@@ -829,7 +829,7 @@
         <input id="agentId" type="text" value="demo-agent" />
 
         <label for="paramsInput">Params (JSON)</label>
-        <textarea id="paramsInput">{"id": "ORDER-001"}</textarea>
+        <textarea id="paramsInput">{"id": "ORDER-0026"}</textarea>
 
         <label for="contextInput">Context (JSON, optional)</label>
         <textarea id="contextInput" style="min-height:58px">{}</textarea>
@@ -844,7 +844,7 @@
       <div class="scenarios-grid">
         <button class="scenario-btn" onclick="loadScenario('happy')">
           <span class="scen-label">Happy Path</span>
-          check_order then process_refund on ORDER-001
+          check_order then process_refund on ORDER-0026
         </button>
         <button class="scenario-btn blocked-btn" onclick="loadScenario('blocked_seq')">
           <span class="scen-label">Blocked - Sequencing</span>
@@ -852,11 +852,11 @@
         </button>
         <button class="scenario-btn blocked-btn" onclick="loadScenario('blocked_age')">
           <span class="scen-label">Blocked - Age</span>
-          ORDER-002 is 45 days old, over the limit
+          ORDER-0002 is 45 days old, over the limit
         </button>
         <button class="scenario-btn blocked-btn" onclick="loadScenario('blocked_status')">
           <span class="scen-label">Blocked - Status</span>
-          ORDER-003 is Delivered, not Damaged
+          ORDER-0003 is Delivered, not Damaged
         </button>
       </div>
     </div>
@@ -885,7 +885,7 @@
       <div class="section-label">Agent Chat (Owl Alpha)</div>
       <div class="card">
         <label for="agentMessage">Your message</label>
-        <textarea id="agentMessage" placeholder="e.g. I want a refund for ORDER-001" style="min-height:70px;"></textarea>
+        <textarea id="agentMessage" placeholder="e.g. I want a refund for ORDER-0026" style="min-height:70px;"></textarea>
         <button id="agentBtn" class="btn-primary" onclick="askAgent()">Ask Agent</button>
         <div id="agentResponse"></div>
       </div>
@@ -957,8 +957,8 @@
 
   function updateDefaultParams(tool) {
     const presets = {
-      check_order:    '{"id": "ORDER-001"}',
-      process_refund: '{"id": "ORDER-001", "order_age_days": 5, "status": "Damaged"}',
+      check_order:    '{"id": "ORDER-0026"}',
+      process_refund: '{"id": "ORDER-0026", "order_age_days": 9, "status": "Damaged"}',
       delete_record:  '{"role": "admin", "confirmed": true}',
     };
     if (presets[tool]) document.getElementById('paramsInput').value = presets[tool];
@@ -1188,25 +1188,25 @@
     const scenarios = {
       happy: {
         steps: [
-          { tool: 'check_order',    params: '{"id": "ORDER-001"}' },
-          { tool: 'process_refund', params: '{"id": "ORDER-001", "order_age_days": 5, "status": "Damaged"}' },
+          { tool: 'check_order',    params: '{"id": "ORDER-0026"}' },
+          { tool: 'process_refund', params: '{"id": "ORDER-0026", "order_age_days": 9, "status": "Damaged"}' },
         ]
       },
       blocked_seq: {
         steps: [
-          { tool: 'process_refund', params: '{"id": "ORDER-001", "order_age_days": 5, "status": "Damaged"}' },
+          { tool: 'process_refund', params: '{"id": "ORDER-0026", "order_age_days": 9, "status": "Damaged"}' },
         ]
       },
       blocked_age: {
         steps: [
-          { tool: 'check_order',    params: '{"id": "ORDER-002"}' },
-          { tool: 'process_refund', params: '{"id": "ORDER-002", "order_age_days": 45, "status": "Damaged"}' },
+          { tool: 'check_order',    params: '{"id": "ORDER-0002"}' },
+          { tool: 'process_refund', params: '{"id": "ORDER-0002", "order_age_days": 45, "status": "Damaged"}' },
         ]
       },
       blocked_status: {
         steps: [
-          { tool: 'check_order',    params: '{"id": "ORDER-003"}' },
-          { tool: 'process_refund', params: '{"id": "ORDER-003", "order_age_days": 10, "status": "Delivered"}' },
+          { tool: 'check_order',    params: '{"id": "ORDER-0003"}' },
+          { tool: 'process_refund', params: '{"id": "ORDER-0003", "order_age_days": 10, "status": "Delivered"}' },
         ]
       },
     };
