@@ -10,7 +10,7 @@ pinned: false
 # PolicyGate: AI Agent Action Firewall
 
 Created by [SKMMT](http://skmmt.rootexception.com/)
-Demo: [Huggingface](https://sheikhkmmtahmid-policygate.hf.space/)
+Demo: [Demo](https://sheikhkmmtahmid-policygate.hf.space/)
 
 ## What is PolicyGate
 
